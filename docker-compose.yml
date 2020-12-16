@@ -1,0 +1,60 @@
+# docker-compose.yml
+
+version: "3.7"
+services:
+  # postgres-test:
+  #   image: postgres
+  #   environment:
+  #     POSTGRES_USER: test
+  #     POSTGRES_PASSWORD: test
+  #   ports: 
+  #     - "5432:5432"
+
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports: 
+      - "5432:5432"
+    volumes:
+      - addressbook-db:/var/lib/postgresql/data
+    networks:
+      - postgres
+    restart: unless-stopped
+
+  pgadmin:
+    container_name: pgadmin_container
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: pgadmin4@pgadmin.org
+      PGADMIN_DEFAULT_PASSWORD: admin
+    volumes:
+       - pgadmin:/root/.pgadmin
+    ports:
+      - "8080:80"
+    networks:
+      - postgres
+    restart: unless-stopped
+    
+
+  # addressbook:
+  #   build:
+  #     context: .
+  #   environment:
+  #     DB_SCHEMA: postgres
+  #     DB_USER: postgres
+  #     DB_PASSWORD: postgres
+  #     DB_HOST: postgres
+  #   depends_on:
+  #     - postgres
+  #   ports:
+  #     - "3000:3000"
+        
+networks:
+  postgres:
+    driver: bridge
+
+volumes:
+  addressbook-db:
+  pgadmin:
