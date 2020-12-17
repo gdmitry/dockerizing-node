@@ -1,6 +1,7 @@
 "use strict";
 
 const fs = require('fs');
+const mockedImage = fs.readFileSync('./assets/image.jpg');
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
@@ -10,7 +11,7 @@ module.exports = {
         {
           title: "smth",
           price: 3434.353,
-          image: fs.readFileSync('./assets/image.jpg'),
+          image: mockedImage,
           createdAt: new Date(),
           updatedAt: new Date(),
         },

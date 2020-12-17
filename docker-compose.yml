@@ -1,5 +1,3 @@
-# docker-compose.yml
-
 version: "3.7"
 services:
   # postgres-test:
@@ -37,19 +35,18 @@ services:
       - postgres
     restart: unless-stopped
     
-
-  # addressbook:
-  #   build:
-  #     context: .
-  #   environment:
-  #     DB_SCHEMA: postgres
-  #     DB_USER: postgres
-  #     DB_PASSWORD: postgres
-  #     DB_HOST: postgres
-  #   depends_on:
-  #     - postgres
-  #   ports:
-  #     - "3000:3000"
+  products:
+    build:
+      context: .
+    environment:
+      DB_SCHEMA: postgres
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      DB_HOST: postgres
+    depends_on:
+      - postgres
+    ports:
+      - "3001:3000"
         
 networks:
   postgres:
