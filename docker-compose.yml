@@ -1,13 +1,5 @@
 version: "3.7"
 services:
-  # postgres-test:
-  #   image: postgres
-  #   environment:
-  #     POSTGRES_USER: test
-  #     POSTGRES_PASSWORD: test
-  #   ports: 
-  #     - "5432:5432"
-
   postgres:
     image: postgres
     environment:
@@ -16,7 +8,7 @@ services:
     ports: 
       - "5432:5432"
     volumes:
-      - addressbook-db:/var/lib/postgresql/data
+      - store-db:/var/lib/postgresql/data
     networks:
       - postgres
     restart: unless-stopped
@@ -35,7 +27,7 @@ services:
       - postgres
     restart: unless-stopped
     
-  products:
+  store-api:
     build:
       context: .
     environment:
@@ -46,12 +38,15 @@ services:
     depends_on:
       - postgres
     ports:
-      - "3001:3000"
+      - "3000:3000"
+    networks:
+      - postgres
+    restart: unless-stopped
         
 networks:
   postgres:
     driver: bridge
 
 volumes:
-  addressbook-db:
+  store-db:
   pgadmin:

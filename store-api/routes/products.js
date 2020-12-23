@@ -1,8 +1,9 @@
-var express = require("express");
-var router = express.Router();
-var Product = require("../models/product");
+const express = require('express');
+const Product = require('../models/product');
 
-router.get("/all", function (req, res) {
+const router = express.Router();
+
+router.get('/all', (req, res) => {
   Product.findAll()
     .then((products) => {
       res.status(200).send(JSON.stringify(products));

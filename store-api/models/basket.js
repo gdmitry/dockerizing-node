@@ -1,7 +1,7 @@
-const Sequelize = require("sequelize");
-const sequelize = require("../connection");
+const Sequelize = require('sequelize');
+const sequelize = require('../connection');
 
-const Basket = sequelize.define("Basket", {
+const Basket = sequelize.define('Basket', {
   totalCount: {
     type: Sequelize.INTEGER,
     defaultValue: 0,

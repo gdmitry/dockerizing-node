@@ -1,5 +1,3 @@
-"use strict";
-
 const fs = require('fs');
 const mockedImage = fs.readFileSync('./assets/image.jpg');
 
@@ -9,7 +7,7 @@ module.exports = {
       "Products",
       [
         {
-          title: "smth",
+          title: "Test product",
           price: 3434.353,
           image: mockedImage,
           createdAt: new Date(),

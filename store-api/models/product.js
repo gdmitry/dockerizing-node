@@ -1,8 +1,9 @@
-const Sequelize = require("sequelize");
-const sequelize = require("../connection");
+const Sequelize = require('sequelize');
+const sequelize = require('../connection');
+console.log("---")
 
 const Product = sequelize.define(
-  "Product",
+  'Product',
   {
     title: {
       type: Sequelize.STRING,
@@ -11,6 +12,10 @@ const Product = sequelize.define(
     image: {
       type: Sequelize.BLOB,
       allowNull: true,
+      get() {
+        const rawValue = this.getDataValue('image');
+        return rawValue ? rawValue.toString('base64') : null;
+      }
     },
     price: {
       type: Sequelize.FLOAT,
@@ -19,11 +24,11 @@ const Product = sequelize.define(
   },
   {
     instanceMethods: {
-      myTestFunc: function () {
-        return "Test User";
+      myTestFunc() {
+        return 'Test User';
       },
     },
-  }
+  },
 );
 
 module.exports = Product;
