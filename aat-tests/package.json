@@ -8,7 +8,7 @@
     "eslint": "eslint .",
     "build": "docker build -t aat-tests .",
     "test:chrome": "testcafe chrome fixtures/**/*.js",
-    "test": "testcafe chrome:headless --concurrency 10 fixtures/**/*.js"
+    "test": "testcafe chrome:headless --concurrency 1 fixtures/**/*.js"
   },
   "dependencies": {
     "cors": "^2.8.5",
