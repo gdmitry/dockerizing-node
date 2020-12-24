@@ -2,7 +2,7 @@ var env = require('dotenv');
 env.config();
 
 var app = require('../app');
-var debug = require('debug')('addressbook:server');
+var debug = require('debug')('store-api:server');
 var http = require('http');
 
 var port = normalizePort(process.env.PORT || '3000');

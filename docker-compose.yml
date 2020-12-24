@@ -29,7 +29,7 @@ services:
     
   store-api:
     build:
-      context: .
+      context: store-api
     environment:
       DB_SCHEMA: postgres
       DB_USER: postgres
@@ -39,6 +39,22 @@ services:
       - postgres
     ports:
       - "3000:3000"
+    networks:
+      - postgres
+    restart: unless-stopped
+
+  gateway-graphql:
+    build:
+      context: gateway-graphql
+    environment:
+      DB_SCHEMA: postgres
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      DB_HOST: postgres
+    depends_on:
+      - postgres
+    ports:
+      - "4000:4000"
     networks:
       - postgres
     restart: unless-stopped

@@ -8,7 +8,7 @@
     "db:migrate": "npx sequelize-cli db:migrate",
     "db:seed": "npx sequelize-cli db:seed:all",
     "docker:build": "docker build -t store-api .",
-    "docker:compose": "docker-compose up",
+    "compose:dev": "docker-compose down && docker-compose -f docker-compose.yml up --build",
     "start": "node ./store-api/bin/www"
   },
   "repository": {

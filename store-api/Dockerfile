@@ -2,7 +2,7 @@ FROM node:14.15.3-alpine3.10
 RUN mkdir -p /opt/app
 WORKDIR /opt/app
 RUN adduser --disabled-password app
-COPY store-api/ .
+COPY ./ .
 RUN chown -R app:app /opt/app
 USER app
 RUN npm install

@@ -6,7 +6,9 @@
     "start": "node ./bin",
     "pm2": "pm2 start processes.json --no-daemon",
     "eslint": "eslint .",
-    "build": "docker build -t store-api ."
+    "build": "docker build -t aat-tests .",
+    "test:chrome": "testcafe chrome fixtures/**/*.js",
+    "test": "testcafe chrome:headless --concurrency 10 fixtures/**/*.js"
   },
   "dependencies": {
     "cors": "^2.8.5",
@@ -23,6 +25,7 @@
     "dotenv": "^8.2.0",
     "eslint": "^7.2.0",
     "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-plugin-import": "^2.22.1"
+    "eslint-plugin-import": "^2.22.1",
+    "testcafe": "^1.10.1"
   }
 }
